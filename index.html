@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Atención Medica Especializada</title>
+
+
+	
+	<!-- jquery -->
+
+	<link rel="stylesheet" href="jquery/css/jquery.mobile-1.4.2.min.css" />
+	<script src="jquery/js/jquery-2.1.0.min.js"></script>
+	<script src="jquery/js/jquery.mobile-1.4.2.min.js"></script>
+
+	<!-- datepicker -->
+
+	<link rel="stylesheet" href="jquery/css/jquery.mobile.datepicker.css" />
+	<script src="jquery/js/jquery.ui.datepicker.js"></script>
+	<script src="jquery/js/jquery.mobile.datepicker.js"></script>
+
+	<!-- theme -->
+
+	<link rel="stylesheet" href="theme/atencion_medica.css" />
+	<link rel="stylesheet" href="theme/jquery.mobile.icons.min.css" />
+
+	<!-- scripts -->	
+
+
+	<script src="js/resources.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/sha256.js"></script>
+
+
+	<!-- styles -->	
+
+	<link rel="stylesheet" href="styles/style.css" />
+
+	<!-- form validator -->
+
+	<script src="validator/jquery.validationEngine-es.js" type="text/javascript" charset="utf-8"></script>
+	<script src="validator/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>	
+	<link rel="stylesheet" href="validator/validationEngine.jquery.css" type="text/css"/>
+	<link rel="stylesheet" href="validator/template.css" type="text/css"/>
+
+
+
+</head>
+
+
+<body>
+	<div data-role="page" id="login">
+
+		<div data-role="content" data-theme="a" align="center">
+			<img src="img/logo.png" alt="">
+			<form  id="loginForm">
+				<label for="username">Nombre de usuario:</label>
+				<input type="text" name="username" id="username" placeholder="Nombre de usuario" class="validate[required,minSizeUsername[6],ajax[ajaxUserCall]]">
+				<label for="username">Contraseña:</label>
+				<input type="password" name="pass" id="pass" placeholder="Contraseña" class="validate[required,minSize[6]]">
+				<button class="formLeft ui-btn ui-mini " id="loginButton">Entrar</button>
+
+			</form>
+
+
+
+
+
+		</div>
+
+
+
+		
+
+	</div>
+
+
+	<div data-role="page" id="search">
+
+		<div data-role="header">			
+			<h1>Ingreso paciente</h1>
+		</div>
+		<div data-role="content">
+
+			<form id="searchForm" class="ui-field-contain">
+				<input type="search" name="search_pacient" class="validate[required,minSizeDocu[6],custom[onlyNumberSp]]" placeholder="Número identificación">
+				<button class="formLeft ui-btn ui-mini " id="searchButton">Buscar</button>
+			</form>
+			<div id="pacients">
+				
+			</div>
+			
+
+
+		</div>
+
+		
+
+	</div>
+
+
+	<div data-role="page" id="registerPacient">
+
+		<div data-role="header">			
+			<h1>Registro paciente</h1>
+		</div>
+
+		<div data-role="content">
+
+			<form id="registerForm">
+				<div class="ui-field-contain">
+					<label for="registername">Nombres:</label>
+					<input type="text" name="registername" id="registername" placeholder="Nombres" class="validate[required]" value="Andres">
+				</div>
+				<div class="ui-field-contain">
+					<label for="registerlastname">Apellidos:</label>
+					<input type="text" name="registerlastname" id="registerlastname" placeholder="Apellidos" class="validate[required]" value="Castellanos">
+				</div>
+				<div class="ui-field-contain" style="height: 68px";>
+					<div class="halfSizeTi">
+						<label for="registertypeid">Documento:</label>
+						<select name="registertypeid" id="typeid" data-mini="true" >
+							<option value="C.C.">C.C.</option>
+							<option value="T.I.">T.I.</option>
+							<option value="C.E.">C.E.</option>
+						</select>
+					</div>
+					<div class="halfSizeInput">
+						<label for="registerid">Numero:</label>
+						<input type="number" name="registerid" id="registerid" placeholder="Documento de Identidad" class="validate[required,custom[onlyNumberSp]]" value="1049619358">
+					</div>
+				</div>
+				<div class="ui-field-contain">
+					<label for="registerbirthdate">Fecha de Nacimiento:</label>
+					<input type="text" data-role="date" name="registerbirthdate" id="registerbirthdate" placeholder="aaaa-mm-dd" class="validate[required,custom[date]]" value="2012-12-12">
+				</div>
+				<div class="ui-field-contain">
+					<label for="registersex">Sexo:</label>
+					<select name="registersex" id="registersex" data-mini="true">
+						<option value="muj">Mujer</option>
+						<option value="hom">Hombre</option>						
+					</select>
+				</div>
+				<div class="ui-field-contain">
+					<label for="registereps">E.P.S:</label>
+					<input type="text" name="registereps" id="registereps" placeholder="E.P.S." class="validate[required]" value="Famisanar">
+				</div>
+				<div class="ui-field-contain">
+					<label for="registeraddress">Dirección:</label>
+					<input type="text" name="registeraddress" id="registeraddress" placeholder="Dirección" class="validate[required]" value="Calle 162 n 55c-20">
+				</div>
+				<button class="formLeft ui-btn ui-mini " type="submit" id="submitButton">Registar</button>
+			</form>
+			
+
+
+		</div>
+
+
+
+
+
+
+		
+
+	</div>
+
+
+	<div data-role="page" id="history">
+
+		<div data-role="header">			
+			<h1>Historia Clinica</h1>
+		</div>
+		<div data-role="content">
+
+			<div id="infoPacient" class="ui-field-contain"></div>
+
+
+			<div data-role="collapsible-set">
+				<div data-role="collapsible">
+					<h4>Historia</h4>
+					<form action="">
+						<input type="text">
+						<input type="text">
+						<input type="text">
+					</form>
+				</div>
+				<div data-role="collapsible">
+					<h4>Nueva Consulta	</h4>
+					<form action="">
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Motivo de la consulta:</h5>
+							<textarea name="consultsubject" id="consultsubject" cols="30" rows="10"></textarea>							
+						</div>
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Enfermedad Actual:</h5>
+							<textarea name="consultactualdisease" id="consultactualdisease" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Antecedentes Personales:</h5>
+							<textarea name="consultpersonalrecord" id="consultpersonalrecord" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Antecedentes Ginecoobstetricos:</h5>
+							<textarea name="consultpersonalrecord" id="consultpersonalrecord" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Cabeza, cara, cuello:</h5>
+							<textarea name="consulthead" id="consulthead" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Cardio pulmonar:</h5>
+							<textarea name="consultcardio" id="consultcardio" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Abdomen:</h5>
+							<textarea name="consultabdomen" id="consultabdomen" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Extremidades:</h5>
+							<textarea name="consultextremidades" id="consultextremidades" cols="30" rows="10"></textarea>							
+						</div>
+
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Sistema nervioso:</h5>
+							<textarea name="consultsistemanervioso" id="consultsistemanervioso" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Diagnostico:</h5>
+							<textarea name="consultdiagnostico" id="consultdiagnostico" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Plan:</h5>
+							<textarea name="consultplan" id="consultplan" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Paraclínicos:</h5>
+							<textarea name="consultparaclinicos" id="consultparaclinicos" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Imagenes diagnosticas:</h5>
+							<textarea name="consultimgdiag" id="consultimgdiag" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Motivo de la interconsulta:</h5>
+							<textarea name="consultmotivo" id="consultmotivo" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Respuesta:</h5>
+							<textarea name="consultanswer" id="consultanswer" cols="30" rows="10"></textarea>							
+						</div>
+
+						<div class="ui-field-contain" data-role="collapsible">
+							<h5>Evolución:</h5>
+							<textarea name="consultevolution" id="consultevolution" cols="30" rows="10"></textarea>							
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+
+
+
+		</div>
+		
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

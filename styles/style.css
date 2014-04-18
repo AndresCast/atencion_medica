@@ -1,0 +1,53 @@
+
+
+
+
+.formLeft{
+
+	width: 40% !important;
+	margin-left: 49%;
+
+
+}
+
+
+
+/*login*/
+
+#loginForm{
+
+	width: 80%;
+	margin-top: 15px;
+
+}
+
+#login img{
+
+	width: 56%;
+margin-top: 10%;
+margin-bottom: 10%;
+
+
+}
+
+
+/*pacient*/
+
+
+#searchForm {
+margin-top: 35px;
+}
+
+
+/*Register*/
+
+
+.halfSizeTi{
+	width: 33%;
+	float: left;
+}
+
+.halfSizeInput {
+width: 63%;
+float: right;
+}
